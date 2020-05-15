@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Big5</string>
+    <string name="big_five">Большая пятерка</string>
+    <string name="five_factor">Пятифакторный личностный тест</string>
+    <string name="sign_in">Войти</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="email">Email</string>
+    <string name="pass">Пароль</string>
+    <string name="name">Введите имя</string>
+    <string name="phone">Телефон</string>
+    <string name="todo">TODO</string>
+    <string name="vved_dan">Войдите в свою учетную запись</string>
+</resources>
