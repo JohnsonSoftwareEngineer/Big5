@@ -167,6 +167,12 @@ public class MainActivity extends AppCompatActivity {
                                 user.setName(name.getText().toString());
                                 user.setPassword(password.getText().toString());
                                 user.setPhone(phone.getText().toString());
+                                user.setBlock_1(0);
+                                user.setBlock_2(0);
+                                user.setBlock_3(0);
+                                user.setBlock_4(0);
+                                user.setBlock_5(0);
+
 
                                 users.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -175,7 +181,10 @@ public class MainActivity extends AppCompatActivity {
                                                 Snackbar.make(root,"Регистрация успешна!", Snackbar.LENGTH_SHORT).show();
                                             }
                                         });
+//                                users.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Block").setValue(user.getBlock_1());
+//                                users.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Block").setValue(user.getBlock_2());
                             }
+
                         });
             }
         });
