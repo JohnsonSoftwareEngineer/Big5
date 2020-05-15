@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.johnsondev.big5.dbModels.User;
@@ -102,6 +103,12 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(AuthResult authResult) {
                                 Snackbar.make(root,"SignIn is succesful!",Snackbar.LENGTH_SHORT).show();
+
+                                                    // Update of block
+
+//                                DatabaseReference databaseReference = db.getReference("User");
+//                                databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("block_1").setValue(1);
+
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
