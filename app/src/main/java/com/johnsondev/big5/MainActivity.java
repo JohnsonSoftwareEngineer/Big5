@@ -180,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+        System.out.println("something");
 
 
 
