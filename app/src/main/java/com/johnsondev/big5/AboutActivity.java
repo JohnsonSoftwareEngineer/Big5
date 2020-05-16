@@ -16,32 +16,14 @@ import com.google.firebase.database.ValueEventListener;
 
 public class AboutActivity extends AppCompatActivity {
 
-    private FirebaseAuth auth;
-    private DatabaseReference reference;
-    private TextView nameField;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        nameField = findViewById(R.id.name_field);
 
-        reference = FirebaseDatabase.getInstance().getReference("User");
-        auth = FirebaseAuth.getInstance();
-        FirebaseUser user = auth.getCurrentUser();
-
-        reference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                nameField.setText(dataSnapshot.child("name").getValue().toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
 
     }
