@@ -102,7 +102,8 @@ public class MainActivity extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
-                                Snackbar.make(root,"SignIn is succesful!",Snackbar.LENGTH_SHORT).show();
+                                startActivity(new Intent(MainActivity.this, AboutActivity.class));
+
 
                                                     // Update of block
 
