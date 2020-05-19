@@ -41,4 +41,26 @@
         продолжить:</string>
 
     <string name="test_number">Test № </string>
+
+    <string name="middle">///</string>
+
+    <string name="q1green">Люди считают меня отзывчивым и
+ доброжелательным человеком</string>
+
+    <string name="q1red">Некоторые люди считают меня холодным и
+ черствым</string>
+
+    <string name="min2">-2</string>
+
+    <string name="min1">-1</string>
+
+    <string name="zero">0</string>
+
+    <string name="pl1">1</string>
+
+    <string name="pl2">2</string>
+
+    <string name="_1">1</string>
+
+
 </resources>

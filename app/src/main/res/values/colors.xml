@@ -5,6 +5,10 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="darkBlue">#0A2F59</color>
     <color name="lightGreen">#62C041</color>
+    <color name="lightGreen2">#AFDD9F</color>
+    <color name="green">#37A611</color>
     <color name="whiteGreen">#ABC270</color>
     <color name="pseudoWhite">#E8E8F0</color>
+    <color name="darkRed">#A62311</color>
+    <color name="pseudoGray">#e1e1e1</color>
 </resources>
