@@ -44,11 +44,9 @@
 
     <string name="middle">///</string>
 
-    <string name="q1green">Люди считают меня отзывчивым и
- доброжелательным человеком</string>
+    <string name="q1green">Мне нравится заниматься физкультурой</string>
 
-    <string name="q1red">Некоторые люди считают меня холодным и
- черствым</string>
+    <string name="q1red">Я не люблю физические нагрузки</string>
 
     <string name="min2">-2</string>
 
@@ -61,6 +59,8 @@
     <string name="pl2">2</string>
 
     <string name="_1">1</string>
+
+    <string name="next">Далее</string>
 
 
 </resources>
