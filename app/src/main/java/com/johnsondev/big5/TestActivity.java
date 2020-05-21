@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ public class TestActivity extends AppCompatActivity {
     private RadioButton radio_Min2, radio_Min1, radio_0, radio_1, radio_2;
     private Button nextBtn;
     private ProgressBar progressBar;
+    private RadioGroup radioGroup;
 
     private RelativeLayout root;
 
@@ -98,6 +100,8 @@ public class TestActivity extends AppCompatActivity {
 
         numberOfTest = findViewById(R.id.number_of_test);
 
+        radioGroup = findViewById(R.id.radio_group);
+
         greenText.setText(question_green[0]);
         redText.setText(question_red[0]);
 
@@ -150,11 +154,7 @@ public class TestActivity extends AppCompatActivity {
                         }
 
 
-                        radio_Min2.setChecked(false);
-                        radio_Min1.setChecked(false);
-                        radio_0.setChecked(false);
-                        radio_1.setChecked(false);
-                        radio_2.setChecked(false);
+                        radioGroup.clearCheck();
 
 
                         index++;
