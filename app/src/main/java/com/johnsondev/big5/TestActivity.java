@@ -29,11 +29,17 @@ public class TestActivity extends AppCompatActivity {
 
 
     private int index = 1;
+    int i = 0;
 
-    String[] question_green;
-    String[] question_red;
+    private String[] question_green;
+    private String[] question_red;
+    static int[] score;
 
-    ArrayList<Integer> score;
+
+
+
+    // TODO: 21.05.2020 конвертировать score в массив[15] и изменить это в EvaluationScore, и ResultActivity 
+
 
 
     @Override
@@ -45,7 +51,7 @@ public class TestActivity extends AppCompatActivity {
 
         question_green = new String[15];
         question_red = new String[15];
-        score = new ArrayList<>();
+        score = new int[15];
 
         //green
 
@@ -106,6 +112,7 @@ public class TestActivity extends AppCompatActivity {
         redText.setText(question_red[0]);
 
 
+
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,36 +143,36 @@ public class TestActivity extends AppCompatActivity {
                         }
 
                         if (radio_Min2.isChecked()) {
-                            score.add(5);
-                            System.out.println(score + " " + score.size());
+                            score[i] = 5;
+                            System.out.println(score[i] + " ");
                         } else if (radio_Min1.isChecked()) {
-                            score.add(4);
-                            System.out.println(score + " " + score.size());
+                            score[i] = 4;
+                            System.out.println(score[i] + " ");
                         } else if (radio_0.isChecked()) {
-                            score.add(3);
-                            System.out.println(score + " " + score.size());
+                            score[i] = 3;
+                            System.out.println(score[i] + " ");
                         } else if (radio_1.isChecked()) {
-                            score.add(2);
-                            System.out.println(score + " " + score.size());
+                            score[i] = 2;
+                            System.out.println(score[i] + " ");
                         } else if (radio_2.isChecked()) {
-                            score.add(1);
-                            System.out.println(score + " " + score.size());
+                            score[i] = 1;
+                            System.out.println(score[i] + " ");
+                        }
+
+                        for (int j = 0; j < score.length; j++) {
+                            System.out.print(score[j] + " ");
                         }
 
                         radioGroup.clearCheck();
 
                         index++;
+                        i++;
 
                     }
 
                 }
 
         });
-
-
-
-
-
 
 
     }
