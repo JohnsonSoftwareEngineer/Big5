@@ -106,67 +106,60 @@ public class TestActivity extends AppCompatActivity {
         redText.setText(question_red[0]);
 
 
-
-
-
-
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                if(index <= 14){                                                                     //если индекс не выходит из question.length()
+                    if (!radio_Min2.isChecked() && !radio_Min1.isChecked() &&
+                            !radio_0.isChecked() && !radio_1.isChecked() && !radio_2.isChecked()) {   // если не выбран ни один из ответов
 
-                    if(!radio_Min2.isChecked() && !radio_Min1.isChecked() &&
-                            !radio_0.isChecked() && !radio_1.isChecked() && !radio_2.isChecked()){   // если не выбран ни один из ответов
+                        Snackbar.make(root, "Вы не ответили", Snackbar.LENGTH_SHORT).show();
 
-                        Snackbar.make(root,"Вы не ответили", Snackbar.LENGTH_SHORT).show();
+                    } else {
 
-                    }else {
-
-                        String indexOfTest = String.valueOf(Integer.parseInt(numberOfTest.getText().toString())+1);
-                        numberOfTest.setText(indexOfTest);                                           // увеличивать индекс теста
-
-                        greenText.setText("");
-                        redText.setText("");
-
-                        greenText.setText(question_green[index]);                                    // показать текущий тест
-                        redText.setText(question_red[index]);
-
-                        progressBar.incrementProgressBy(1);
-
-
-                        if(radio_Min2.isChecked()) {
-                            score.add(5);
-                            System.out.println(score);
-                        }else if(radio_Min1.isChecked()) {
-                            score.add(4);
-                            System.out.println(score);
-                        }else if(radio_0.isChecked()) {
-                            score.add(3);
-                            System.out.println(score);
-                        }else if(radio_1.isChecked()) {
-                            score.add(2);
-                            System.out.println(score);
-                        }else if(radio_2.isChecked()) {
-                            score.add(1);
-                            System.out.println(score);
+                        if (index > 14) {
+                            startActivity(new Intent(TestActivity.this, ResultActivity.class));  // если индекс выходит из question.length() то открыть новый Activity
                         }
 
+                        if (index <= 14) {
+                            String indexOfTest = String.valueOf(Integer.parseInt(numberOfTest.getText().toString()) + 1);
+                            numberOfTest.setText(indexOfTest);                                           // увеличивать индекс теста
+
+                            greenText.setText("");
+                            redText.setText("");
+
+                            greenText.setText(question_green[index]);                                    // показать текущий тест
+                            redText.setText(question_red[index]);
+
+                            progressBar.incrementProgressBy(1);
+                        }
+
+                        if (radio_Min2.isChecked()) {
+                            score.add(5);
+                            System.out.println(score + " " + score.size());
+                        } else if (radio_Min1.isChecked()) {
+                            score.add(4);
+                            System.out.println(score + " " + score.size());
+                        } else if (radio_0.isChecked()) {
+                            score.add(3);
+                            System.out.println(score + " " + score.size());
+                        } else if (radio_1.isChecked()) {
+                            score.add(2);
+                            System.out.println(score + " " + score.size());
+                        } else if (radio_2.isChecked()) {
+                            score.add(1);
+                            System.out.println(score + " " + score.size());
+                        }
 
                         radioGroup.clearCheck();
-
 
                         index++;
 
                     }
 
-                }else{
-                        startActivity(new Intent(TestActivity.this, ResultActivity.class));  // если индекс выходит из question.length() то открыть новый Activity
                 }
-                // TODO: 20.05.2020 сделать вход в index <= 14 для зачета последнего теста с игнорированием grenTest / redTest .setText(); 
 
-            }
         });
 
 
