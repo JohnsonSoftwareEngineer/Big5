@@ -1,9 +1,18 @@
 package com.johnsondev.big5;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
@@ -14,6 +23,7 @@ public class ResultActivity extends AppCompatActivity {
     private TextView block3;
     private TextView block4;
     private TextView block5;
+    private TextView resultNameField;
 
     private int[] midScoreResult1;
     private int[] midScoreResult2;
@@ -27,6 +37,11 @@ public class ResultActivity extends AppCompatActivity {
     private int blockResult4;
     private int blockResult5;
 
+    private FirebaseDatabase db;
+    private FirebaseAuth auth;
+    private DatabaseReference reference;
+    private FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +53,15 @@ public class ResultActivity extends AppCompatActivity {
         block4 = findViewById(R.id.block_4);
         block5 = findViewById(R.id.block_5);
 
+        resultNameField = findViewById(R.id.result_name_field);
+
         midScoreResult1 = new int[5];
         midScoreResult2 = new int[5];
         midScoreResult3 = new int[5];
         midScoreResult4 = new int[5];
         midScoreResult5 = new int[5];
+
+        db =FirebaseDatabase.getInstance();
 
         // block 1
 
@@ -129,6 +148,31 @@ public class ResultActivity extends AppCompatActivity {
 
         block5.setText(String.valueOf(blockResult5));
         System.out.println("block = " + blockResult5);
+
+
+        reference = db.getReference("User");
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+
+        reference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                resultNameField.setText(dataSnapshot.child("name").getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("block_1").setValue(blockResult1);
+        reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("block_2").setValue(blockResult2);
+        reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("block_3").setValue(blockResult3);
+        reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("block_4").setValue(blockResult4);
+        reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("block_5").setValue(blockResult5);
+
+
 
 
     }
