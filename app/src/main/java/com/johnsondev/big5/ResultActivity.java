@@ -3,7 +3,11 @@ package com.johnsondev.big5;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,12 +22,13 @@ import org.w3c.dom.Text;
 
 public class ResultActivity extends AppCompatActivity {
 
-    private TextView block1;
-    private TextView block2;
-    private TextView block3;
-    private TextView block4;
-    private TextView block5;
-    private TextView resultNameField;
+
+    private TextView personType;
+    private TextView infoPerson;
+
+    private RelativeLayout root;
+
+    private ImageView personImg;
 
     private int[] midScoreResult1;
     private int[] midScoreResult2;
@@ -37,6 +42,8 @@ public class ResultActivity extends AppCompatActivity {
     private int blockResult4;
     private int blockResult5;
 
+    private int middleScore;
+
     private FirebaseDatabase db;
     private FirebaseAuth auth;
     private DatabaseReference reference;
@@ -47,13 +54,16 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        block1 = findViewById(R.id.block_1);
-        block2 = findViewById(R.id.block_2);
-        block3 = findViewById(R.id.block_3);
-        block4 = findViewById(R.id.block_4);
-        block5 = findViewById(R.id.block_5);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        resultNameField = findViewById(R.id.result_name_field);
+
+        personType = findViewById(R.id.person_type);
+        infoPerson = findViewById(R.id.info_person);
+
+        root = findViewById(R.id.root3);
+
+        personImg = findViewById(R.id.person_img);
 
         midScoreResult1 = new int[5];
         midScoreResult2 = new int[5];
@@ -78,9 +88,6 @@ public class ResultActivity extends AppCompatActivity {
             blockResult1 += midScoreResult1[i];
         }
 
-        block1.setText(String.valueOf(blockResult1));
-        System.out.println("block = " + blockResult1);
-
         // block 2
 
         int index = 15;
@@ -94,9 +101,6 @@ public class ResultActivity extends AppCompatActivity {
         for (int i = 0; i < 5; i++) {
             blockResult2 += midScoreResult2[i];
         }
-
-        block2.setText(String.valueOf(blockResult2));
-        System.out.println("block = " + blockResult2);
 
         //block 3
 
@@ -112,9 +116,6 @@ public class ResultActivity extends AppCompatActivity {
             blockResult3 += midScoreResult3[i];
         }
 
-        block3.setText(String.valueOf(blockResult3));
-        System.out.println("block = " + blockResult3);
-
         //block 4
 
         index = 45;
@@ -128,9 +129,6 @@ public class ResultActivity extends AppCompatActivity {
         for (int i = 0; i < 5; i++) {
             blockResult4 += midScoreResult4[i];
         }
-
-        block4.setText(String.valueOf(blockResult4));
-        System.out.println("block = " + blockResult4);
 
         //block 5
 
@@ -146,25 +144,35 @@ public class ResultActivity extends AppCompatActivity {
             blockResult5 += midScoreResult5[i];
         }
 
-        block5.setText(String.valueOf(blockResult5));
-        System.out.println("block = " + blockResult5);
+        middleScore = (blockResult1 + blockResult2 + blockResult3 + blockResult4 + blockResult5) / 5;
 
+        if(middleScore > 51){
+
+            root.setBackgroundResource(R.drawable.comandir_background);
+            personImg.setImageResource(R.drawable.comandir_image);
+            personType.setText("Командир");
+            infoPerson.setText("Храбрые, находчивые и сильные духом лидеры, всегда находящие путь - или пробивающие путь.");
+
+        }else if(middleScore < 51 && middleScore > 41){
+
+            root.setBackgroundResource(R.drawable.avanturist_background);
+            personImg.setImageResource(R.drawable.avanturist_image);
+            personType.setText("Авантюрист");
+            infoPerson.setText("Умные и любопытные мыслители, которые никогда не откажутся от интеллектуального вызова.");
+
+        }else if(middleScore < 41){
+
+            root.setBackgroundResource(R.drawable.logic_background);
+            personImg.setImageResource(R.drawable.logic_image);
+            personType.setText("Логик");
+            infoPerson.setText("Практичные и опирающиеся на факты люди, надежность которых непоколебима.");
+
+        }
 
         reference = db.getReference("User");
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
-        reference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                resultNameField.setText(dataSnapshot.child("name").getValue().toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
         reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("block_1").setValue(blockResult1);
         reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("block_2").setValue(blockResult2);

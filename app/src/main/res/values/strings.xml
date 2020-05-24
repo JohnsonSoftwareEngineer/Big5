@@ -62,5 +62,14 @@
 
     <string name="next">Далее</string>
 
+    <string name="type_of_person">Твой тип личности:</string>
+
+    <string name="image">image</string>
+
+    <string name="comandir">Командир</string>
+
+    <string name="avanturist">Авантюрист</string>
+
+    <string name="logic">Логик</string>
 
 </resources>
