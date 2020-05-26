@@ -3,13 +3,21 @@ package com.johnsondev.big5;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareButton;
+import com.facebook.share.widget.ShareDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +33,8 @@ public class ResultActivity extends AppCompatActivity {
 
     private TextView personType;
     private TextView infoPerson;
+
+    private ShareButton shareBtn;
 
     private RelativeLayout root;
 
@@ -57,13 +67,14 @@ public class ResultActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-
         personType = findViewById(R.id.person_type);
         infoPerson = findViewById(R.id.info_person);
 
         root = findViewById(R.id.root3);
 
         personImg = findViewById(R.id.person_img);
+
+        shareBtn = findViewById(R.id.share_btn);
 
         midScoreResult1 = new int[5];
         midScoreResult2 = new int[5];
@@ -180,6 +191,24 @@ public class ResultActivity extends AppCompatActivity {
         reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("block_4").setValue(blockResult4);
         reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("block_5").setValue(blockResult5);
 
+        Drawable drawable = getResources().getDrawable(R.drawable.avanturist_image);
+        Bitmap image = ((BitmapDrawable) drawable).getBitmap();
+
+        SharePhoto photo = new SharePhoto.Builder().setBitmap(image).build();
+        final SharePhotoContent content = new SharePhotoContent.Builder().addPhoto(photo).build();
+
+        shareBtn.setShareContent(content);
+
+        shareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                ShareDialog.show(ResultActivity.this, content);
+
+
+            }
+        });
 
 
 

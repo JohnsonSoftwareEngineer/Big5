@@ -11,20 +11,16 @@
     <string name="todo">TODO</string>
     <string name="vved_dan">Войдите в свою учетную запись</string>
     <string name="info">Информация о тесте:</string>
-
     <string name="info_1">        Большая пятерка - это пятифакторный
 личностный тест, создан для диагностики
 личностных факторов темперамента и
 характера.  </string>
-
     <string name="info_2">        Прочтите парные высказывания и
 определите, какое из двух альтернативных
  высказываний вам больше всего подходит.</string>
-
     <string name="info_3">        Если подходит высказывание, записанное
  слева от оценочной шкалы, то используйте
 для оценки этого высказывания значение «-2» или «-1». </string>
-
     <string name="info_4">        Если вам подходит правое высказывание,
  то оно оценивается значениями «2» или «1».
  Значения «-2» или «2» выбираются в том
@@ -32,44 +28,26 @@
 выражено сильно. Если это высказывание
 выражено слабо, то выбирается значение «-1»
  или «1». </string>
-
     <string name="info_5">  В том случае, когда ни одна из альтернатив вам не подходит, а подходит нечто среднее между ними, то выбирается значение «0».</string>
-
     <string name="start">Начать</string>
-
     <string name="tap_to_continue">Нажмите чтобы
         продолжить:</string>
-
     <string name="test_number">Test № </string>
-
     <string name="middle">///</string>
-
     <string name="q1green">Мне нравится заниматься физкультурой</string>
-
     <string name="q1red">Я не люблю физические нагрузки</string>
-
     <string name="min2">-2</string>
-
     <string name="min1">-1</string>
-
     <string name="zero">0</string>
-
     <string name="pl1">1</string>
-
     <string name="pl2">2</string>
-
     <string name="_1">1</string>
-
     <string name="next">Далее</string>
-
     <string name="type_of_person">Твой тип личности:</string>
-
     <string name="image">image</string>
-
     <string name="comandir">Командир</string>
-
     <string name="avanturist">Авантюрист</string>
-
     <string name="logic">Логик</string>
+    <string name="facebook_app_id">723773141496715</string>
 
 </resources>
