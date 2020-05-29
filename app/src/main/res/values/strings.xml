@@ -49,5 +49,9 @@
     <string name="avanturist">Авантюрист</string>
     <string name="logic">Логик</string>
     <string name="facebook_app_id">723773141496715</string>
+    <string name="share">Share</string>
+    <string name="test">Практичные и опирающиеся на факты люди, надежность которых непоколебима. Мыслят логически, в сложных ситуациях проявляют высокий интелект.</string>
+    <string name="share_result">Поделись своим результатом</string>
+    <string name="like_test">Понаравился тест?</string>
 
 </resources>
