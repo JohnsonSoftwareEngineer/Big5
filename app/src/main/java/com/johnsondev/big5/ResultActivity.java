@@ -227,13 +227,7 @@ public class ResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                int permissionStatus = ContextCompat.checkSelfPermission(ResultActivity.this, Manifest.permission.INTERNET);
-
-                if (permissionStatus == PackageManager.PERMISSION_GRANTED) {
                     ShareDialog.show(ResultActivity.this, content);
-                }
-
-
 
             }
         });
